@@ -11,15 +11,14 @@ import UIKit
 class PeopleViewController: UITableViewController {
     
     var people = [String]()
-    var url: NSURL?
+    var url: NSURL? = NSURL(string: "http://swapi.co/api/people/")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-
-        url = NSURL(string: "http://swapi.co/api/people/")
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url!, completionHandler: {
+       
+        StarWarsModel.getAllPeople() {
+//        let session = NSURLSession.sharedSession()
+//        let task = session.dataTaskWithURL(url!, completionHandler: {
             data, response, error in
             do {
                 if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
@@ -31,29 +30,23 @@ class PeopleViewController: UITableViewController {
                             print(resultsArray[i].valueForKey("name")!)
                             self.people.append(String(resultsArray[i].valueForKey("name")!))
                         }
-                        
-//                        print(String(jsonResult.valueForKey("next")!))
-                        
                         if String(jsonResult.valueForKey("next")!) != "<null>" {
                             print(String(jsonResult.valueForKey("next")!))
-                            self.url = NSURL(string: String(jsonResult.valueForKey("next")!))
+                            StarWarsModel.url = NSURL(string: String(jsonResult.valueForKey("next")!))
                             self.viewDidLoad()
-                            
                         } else {
-                            print("OH ")
+                            print("OH NOTE")
                         }
                         dispatch_async(dispatch_get_main_queue(), {
                             self.tableView.reloadData()
                         })
-                        
                     }
                 }
                 
             } catch {
                 print("error")
             }
-        })
-        task.resume()
+        }
         self.tableView.reloadData()
     }
 

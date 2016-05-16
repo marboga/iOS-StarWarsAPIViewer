@@ -14,6 +14,7 @@
 		A63FB1871CEA1BA800DAACD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A63FB1861CEA1BA800DAACD4 /* Assets.xcassets */; };
 		A63FB18A1CEA1BA800DAACD4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63FB1881CEA1BA800DAACD4 /* LaunchScreen.storyboard */; };
 		A6CD07D41CEA68AE00D9EEF2 /* FilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD07D31CEA68AE00D9EEF2 /* FilmsViewController.swift */; };
+		A6CD07D81CEA833500D9EEF2 /* StarWarsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CD07D71CEA833500D9EEF2 /* StarWarsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A63FB1891CEA1BA800DAACD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A63FB18B1CEA1BA800DAACD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6CD07D31CEA68AE00D9EEF2 /* FilmsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmsViewController.swift; sourceTree = "<group>"; };
+		A6CD07D71CEA833500D9EEF2 /* StarWarsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarWarsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				A63FB17C1CEA1BA800DAACD4 /* AppDelegate.swift */,
 				A63FB17E1CEA1BA800DAACD4 /* PeopleViewController.swift */,
+				A6CD07D71CEA833500D9EEF2 /* StarWarsModel.swift */,
 				A6CD07D31CEA68AE00D9EEF2 /* FilmsViewController.swift */,
 				A63FB1801CEA1BA800DAACD4 /* Main.storyboard */,
 				A63FB1861CEA1BA800DAACD4 /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 			files = (
 				A63FB17F1CEA1BA800DAACD4 /* PeopleViewController.swift in Sources */,
 				A63FB17D1CEA1BA800DAACD4 /* AppDelegate.swift in Sources */,
+				A6CD07D81CEA833500D9EEF2 /* StarWarsModel.swift in Sources */,
 				A6CD07D41CEA68AE00D9EEF2 /* FilmsViewController.swift in Sources */,
 				A63FB1851CEA1BA800DAACD4 /* StarWarsEncyclopedia.xcdatamodeld in Sources */,
 			);

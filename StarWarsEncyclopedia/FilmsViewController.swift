@@ -15,7 +15,7 @@ class FilmsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         filmUrl = NSURL(string: "http://swapi.co/api/films/")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(filmUrl!, completionHandler: {
