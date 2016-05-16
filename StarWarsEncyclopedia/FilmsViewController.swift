@@ -30,8 +30,10 @@ class FilmsViewController: UITableViewController {
                             print(resultsArray[i].valueForKey("title")!)
                             self.films.append(String(resultsArray[i].valueForKey("title")!))
                         }
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.tableView.reloadData()
+                        })
                         
-                        self.tableView.reloadData()
                     }
                 }
                 

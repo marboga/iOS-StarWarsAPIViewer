@@ -40,7 +40,7 @@ class PeopleViewController: UITableViewController {
                             self.viewDidLoad()
                             
                         } else {
-                            print("OH NOTE")
+                            print("OH ")
                         }
                         dispatch_async(dispatch_get_main_queue(), {
                             self.tableView.reloadData()
