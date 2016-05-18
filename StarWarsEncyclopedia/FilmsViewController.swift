@@ -55,6 +55,10 @@ class FilmsViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("FilmDetailSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
+        tableView.reloadData()
+    }
     
     
 }
