@@ -12,6 +12,7 @@ class FilmsViewController: UITableViewController {
     
     var films = [String]()
     var filmUrl: NSURL?
+    var filmToSend: [NSDictionary] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,8 @@ class FilmsViewController: UITableViewController {
                         for i in 0..<resultsArray.count{
                             print(resultsArray[i].valueForKey("title")!)
                             self.films.append(String(resultsArray[i].valueForKey("title")!))
+                                self.filmToSend.append(resultsArray[i] as! NSDictionary)
+                            
                         }
                         dispatch_async(dispatch_get_main_queue(), {
                             self.tableView.reloadData()
@@ -60,5 +63,16 @@ class FilmsViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("made it here")
+        let controller = segue.destinationViewController as! FilmDetailViewController
+        print(sender)
+        
+        if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell) {
+            print(indexPath.row)
+            print(films[indexPath.row])
+            controller.dataToPass = filmToSend[indexPath.row]
+        }
+    }
     
 }

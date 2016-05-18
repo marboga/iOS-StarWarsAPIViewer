@@ -13,6 +13,8 @@ class StarWarsModel {
     
     static var url = NSURL(string: "http://swapi.co/api/people/")
     
+    static var speciesURL = ""
+    
     static func getAllPeople(completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
         
         let session = NSURLSession.sharedSession()
@@ -21,6 +23,17 @@ class StarWarsModel {
         let task = session.dataTaskWithURL(url!, completionHandler: completionHandler)
         
         // Actually "execute" the task. This is the line that actually makes the request that we set up above
+        task.resume()
+    }
+    
+    static func getOneSpecies(completionHandler: (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void) {
+        
+        print(speciesURL, "species url")
+        
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithURL(NSURL(string: "\(speciesURL)")!, completionHandler: completionHandler)
+  
         task.resume()
     }
     

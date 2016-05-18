@@ -11,6 +11,7 @@ import UIKit
 class PeopleViewController: UITableViewController {
     
     var people = [String]()
+    var personToSend = [NSDictionary]()
     var url: NSURL? = NSURL(string: "http://swapi.co/api/people/")
     
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ class PeopleViewController: UITableViewController {
                         for i in 0..<resultsArray.count{
                             print(resultsArray[i].valueForKey("name")!)
                             self.people.append(String(resultsArray[i].valueForKey("name")!))
+                            self.personToSend.append(resultsArray[i] as! NSDictionary)
                         }
                         if String(jsonResult.valueForKey("next")!) != "<null>" {
                             print(String(jsonResult.valueForKey("next")!))
@@ -58,6 +60,23 @@ class PeopleViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("PersonCell")!
         cell.textLabel?.text = people[indexPath.row]
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("PersonDetailSegue", sender: tableView.cellForRowAtIndexPath(indexPath))
+        tableView.reloadData()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("made it here")
+        let controller = segue.destinationViewController as! PersonDetailViewController
+        print(sender)
+        
+        if let indexPath = tableView.indexPathForCell(sender as! UITableViewCell) {
+            print(indexPath.row)
+            print(people[indexPath.row])
+            controller.personDataToPass = personToSend[indexPath.row]
+        }
     }
 }
 
